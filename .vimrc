@@ -53,15 +53,18 @@ set statusline+=%{SyntasticStatuslineFlag()}
 set statusline+=%*
 
 let g:syntastic_always_populate_loc_list = 1
-"let g:syntastic_auto_loc_list = 1
+let g:syntastic_auto_loc_list = 1
 let g:syntastic_check_on_open = 1
 let g:syntastic_check_on_wq = 0
-
+  "for js
+Plugin 'w0rp/ale'
 
 "Navigation plugins
 Plugin 'rking/ag.vim'
   "nerdtree
 Plugin 'scrooloose/nerdtree'
+  "ack
+Plugin 'mileszs/ack.vim'
 map <C-n> :NERDTreeToggle<CR>
   "quick fuzzy search
 "Plugin 'git://git.wincent.com/command-t.git'
@@ -81,7 +84,7 @@ let g:airline_theme='simple'
 
 "Plugin 'prettier/vim-prettier'
 Plugin 'kien/ctrlp.vim'
-"let g:ctrlp_max_files=0
+let g:ctrlp_max_files=0
 let g:ctrlp_user_command =  
   \ ['.git', 'cd %s && git ls-files -co --exclude-standard']
 
@@ -140,14 +143,16 @@ map <Leader>z :BD <cr>
 
 
 filetype on
-colorscheme izzet
+colorscheme midnightsun
 syntax on
 
 set title
 set showtabline=2
 
-" set search
+" search behaviour
 set is
+set nohlsearch
+let g:ackprg = 'ag --nogroup --nocolor --column'
 
 " Set numbers
 set number
@@ -168,9 +173,6 @@ set linebreak
 
 "Wild Menu
 set wildmenu
-
-"Search behaviour
-set hlsearch
 
 "HTML Tab autocomplete (</     ctrl+x, ctrl+o)
 autocmd FileType html set omnifunc=htmlcomplete#CompleteTags
