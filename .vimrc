@@ -1,10 +1,11 @@
-"~/.vimrc
 "---------------------------VUNDLE----------------------"
 set nocompatible              " be iMproved, required
 filetype off                  " required
 
-" set the runtime path to include Vundle and initialize
+" store swp files in .vim/tmp instead of current dir
+set directory^=$HOME/.vim/tmp//
 
+" set the runtime path to include Vundle and initialize
 set rtp+=~/.vim/bundle/Vundle.vim
 set runtimepath^=~/.vim/bundle/vim-textobj-user
 call vundle#begin()
@@ -139,8 +140,6 @@ map <Leader>5 <C-^>
 map <Leader>ld :ls<CR>:bd
 " close buffer:
 map <Leader>z :BD <cr>
-
-
 
 filetype on
 colorscheme midnightsun
