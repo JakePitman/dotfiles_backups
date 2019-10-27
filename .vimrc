@@ -66,7 +66,8 @@ Plugin 'rking/ag.vim'
 Plugin 'scrooloose/nerdtree'
   "ack
 Plugin 'mileszs/ack.vim'
-map <C-n> :NERDTreeToggle<CR>
+map <C-h> :NERDTreeToggle<CR>
+map <C-n> :NERDTreeFind<CR>
   "quick fuzzy search
 "Plugin 'git://git.wincent.com/command-t.git'
 
