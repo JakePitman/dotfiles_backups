@@ -61,13 +61,16 @@ let g:syntastic_check_on_wq = 0
 Plugin 'w0rp/ale'
 
 "Navigation plugins
+Plugin 'mileszs/ack.vim'
 Plugin 'rking/ag.vim'
   "nerdtree
 Plugin 'scrooloose/nerdtree'
-  "ack
-Plugin 'mileszs/ack.vim'
 map <C-h> :NERDTreeToggle<CR>
 map <C-n> :NERDTreeFind<CR>
+let NERDTreeAutoDeleteBuffer = 1
+let NERDTreeMinimalUI = 1
+let NERDTreeDirArrows = 1
+
   "quick fuzzy search
 "Plugin 'git://git.wincent.com/command-t.git'
 
