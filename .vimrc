@@ -119,6 +119,11 @@ filetype plugin indent on    " required
 "---------------------------------------------------------"
 
 "KEY MAPPINGS
+"Execute bash command & receive result
+:noremap Q !!$SHELL<CR>
+
+"Copy to clipboard
+:noremap <C-c> :w !pbcopy<CR><CR>
 "Buffers
 "
 " :ls & :b shortcut
