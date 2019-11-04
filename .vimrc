@@ -71,7 +71,7 @@ let NERDTreeAutoDeleteBuffer = 1
 let NERDTreeMinimalUI = 1
 let NERDTreeDirArrows = 1
 
-  "quick fuzzy search
+"quick fuzzy search
 "Plugin 'git://git.wincent.com/command-t.git'
 
 "Shortcut plugins

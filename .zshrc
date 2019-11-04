@@ -1,10 +1,11 @@
-export ZSH="/Users/jake.pitman/.oh-my-zsh"
+export ZSH="$HOME/.oh-my-zsh"
 
 plugins=(
   git
   # zsh-nvm this is commented out because it produces a 'nvm is not compatible with the npm config'
 )
 
+alias vim=/usr/local/bin/vim
 
 ZSH_THEME="powerlevel9k/powerlevel9k"
 # POWERLEVEL 9k CUSTOMISATION
@@ -27,7 +28,7 @@ GR33N_COLORS[untracked_color]='83'
 
 BLACK_SHADE='234'
 
-read -r MAIN_COLOR UNTRACKED_COLOR <<<$(echo $IZZET_COLORS)
+read -r MAIN_COLOR UNTRACKED_COLOR <<<$(echo $MIDNIGHT_SUN_COLORS)
 
 POWERLEVEL9K_CONTEXT_DEFAULT_FOREGROUND=$BLACK_SHADE
 POWERLEVEL9K_CONTEXT_DEFAULT_BACKGROUND=$MAIN_COLOR
@@ -64,8 +65,6 @@ bfr() {
 #fzf
 source "/usr/local/opt/fzf/shell/key-bindings.zsh"
 #forgit - fuzzy git: https://github.com/wfxr/forgit
-
-#alias vim="nvim"
 
 change-theme() {
   ~/change-theme/main.sh $1 && source ~/.zshrc
