@@ -1,4 +1,3 @@
-
 colorscheme midnightsun
 syntax on
 set title
