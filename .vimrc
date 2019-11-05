@@ -1,6 +1,7 @@
-"---------------------------VUNDLE----------------------"
+
 set nocompatible              " be iMproved, required
 filetype off                  " required
+set backspace=indent,eol,start
 
 " store swp files in .vim/tmp instead of current dir
 set directory^=$HOME/.vim/tmp//
