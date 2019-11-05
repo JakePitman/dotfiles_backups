@@ -1,36 +1,59 @@
 
-set nocompatible              " be iMproved, required
-filetype off                  " required
-set backspace=indent,eol,start
+colorscheme midnightsun
+syntax on
+set title
+set wildmenu
+set showtabline=2
+set backspace=indent,eol,start " allow delete on pre-existing chars
+set directory^=$HOME/.vim/tmp// " store swp files in .vim/tmp instead of current dir
+let g:jsx_ext_required = 0 " Use JSX for js files
 
-" store swp files in .vim/tmp instead of current dir
-set directory^=$HOME/.vim/tmp//
+" ------ fuzzy search -------""
+set nocompatible              " limit search to current project
+set path+=**                  " allow recursive search with :find
+filetype off                  " required
+
+
+" ------ netrw -------
+autocmd FileType netrw setl bufhidden=delete "allow :q in netrw after copying/deleting etc
+let g:netrw_winsize = 15
+
+" ---
+
+" ------ search behaviour ------
+set is
+set nohlsearch
+let g:ackprg = 'ag --nogroup --nocolor --column'
+
+" ------ line numbers ------
+set number
+set relativenumber
+
+" ------ tab btn behaviour ------
+set tabstop=2
+set softtabstop=2
+set shiftwidth=2
+set expandtab
+set smarttab
+set autoindent
+
+" ------ word wrapping ------
+set wrap
+set breakindent
+set linebreak
+
 
 " set the runtime path to include Vundle and initialize
 set rtp+=~/.vim/bundle/Vundle.vim
 set runtimepath^=~/.vim/bundle/vim-textobj-user
 call vundle#begin()
 
-let g:netrw_winsize = 15
 
-" alternatively, pass a path where Vundle should install plugins
-"call vundle#begin('~/some/path/here')
+" ------------ VUNDLE ----------------
+
 
 " let Vundle manage Vundle, required
 Plugin 'VundleVim/Vundle.vim'
-"
-
-
-" Use JSX for js files
-let g:jsx_ext_required = 0
-
-" Enable deoplete startup
-"let g:deoplete#enable_at_startup = 1
-"
-
-" The following are examples of different formats supported.
-" Keep Plugin commands between vundle#begin/end.
-" plugin on GitHub repo
 
 "Github plugins
 Plugin 'tpope/vim-fugitive'
@@ -55,25 +78,19 @@ set statusline+=%{SyntasticStatuslineFlag()}
 set statusline+=%*
 
 let g:syntastic_always_populate_loc_list = 1
-"let g:syntastic_auto_loc_list = 1
 let g:syntastic_check_on_open = 1
 let g:syntastic_check_on_wq = 0
-  "for js
-Plugin 'w0rp/ale'
 
 "Navigation plugins
 Plugin 'mileszs/ack.vim'
 Plugin 'rking/ag.vim'
   "nerdtree
-Plugin 'scrooloose/nerdtree'
-map <C-h> :NERDTreeToggle<CR>
-map <C-n> :NERDTreeFind<CR>
-let NERDTreeAutoDeleteBuffer = 1
-let NERDTreeMinimalUI = 1
-let NERDTreeDirArrows = 1
-
-"quick fuzzy search
-"Plugin 'git://git.wincent.com/command-t.git'
+"Plugin 'scrooloose/nerdtree'
+"map <C-h> :NERDTreeToggle<CR>
+"map <C-n> :NERDTreeFind<CR>
+"let NERDTreeAutoDeleteBuffer = 1
+"let NERDTreeMinimalUI = 1
+"let NERDTreeDirArrows = 1
 
 "Shortcut plugins
 Plugin 'tpope/vim-repeat'
@@ -82,8 +99,9 @@ Plugin 'tpope/vim-repeat'
 Plugin 'tpope/vim-rails'
 Plugin 'leafgarland/typescript-vim'
 Plugin 'elixir-lang/vim-elixir'
+Plugin 'w0rp/ale' "js
 
-"Theme plugins
+"Airline Theme plugins
 Plugin 'vim-airline/vim-airline'
 Plugin 'vim-airline/vim-airline-themes'
 let g:airline_theme='simple'
@@ -99,89 +117,11 @@ Plugin 'scrooloose/nerdcommenter'
 set rtp+=/usr/local/opt/fzf
 "Plugin 'tpope/vim-commentary'
 
-" git repos on your local machine (i.e. when working on your own plugin)
-" Plugin 'file:///home/gmarik/path/to/plugin'
-" The sparkup vim script is in a subdirectory of this repo called vim.
-" Pass the path to set the runtimepath properly.
-
 call vundle#end()
 filetype plugin indent on    " required
-" To ignore plugin indent changes, instead use:
-"filetype plugin on
-"
-" Brief help
-" :PlugList       - lists configured plugins
-" :PlugInstall    - installs plugins; append `!` to update or just :PlugUpdate
-" :PlugSearch foo - searches for foo; append `!` to refresh local cache
-" :PlugClean      - confirms removal of unused plugins; append `!` to auto-approve removal
-"
-" see :h vundle for more details or wiki for FAQ
+
 " Put your non-Plugin stuff after this line
 "---------------------------------------------------------"
-
-"KEY MAPPINGS
-"Execute bash command & receive result
-:noremap Q !!$SHELL<CR>
-
-"Copy to clipboard
-:noremap <C-c> :w !pbcopy<CR><CR>
-"Buffers
-"
-" :ls & :b shortcut
-map <Leader>` :ls<CR>:b<Space>
-
-" next & previous buffers
-nnoremap <Leader>2 :bnext<CR>
-nnoremap <Leader>1 :bprevious<CR>
-
-"open buffer list for range deletion
-:nnoremap <leader>lsd :ls<cr>:bd<home>
-
-" switch windows:
-map <Leader>d <C-W>W
-map <Leader>f <C-W>w
-
-" switch tabs:
-map <Leader>3 gT
-map <Leader>4 gt
-map <Leader>5 <C-^>
-
-" delete buffer from list:
-map <Leader>ld :ls<CR>:bd
-" close buffer:
-map <Leader>z :BD <cr>
-
-filetype on
-colorscheme midnightsun
-syntax on
-
-set title
-set showtabline=2
-
-" search behaviour
-set is
-set nohlsearch
-let g:ackprg = 'ag --nogroup --nocolor --column'
-
-" Set numbers
-set number
-set relativenumber
-
-" Tab behaviour
-set tabstop=2
-set softtabstop=2
-set shiftwidth=2
-set expandtab
-set smarttab
-set autoindent
-
-"word wrap
-set wrap
-set breakindent
-set linebreak
-
-"Wild Menu
-set wildmenu
 
 "HTML Tab autocomplete (</     ctrl+x, ctrl+o)
 autocmd FileType html set omnifunc=htmlcomplete#CompleteTags
