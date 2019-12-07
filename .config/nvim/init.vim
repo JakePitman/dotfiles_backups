@@ -92,7 +92,16 @@ Plugin 'tpope/vim-repeat'
 Plugin 'tpope/vim-rails'
 Plugin 'leafgarland/typescript-vim'
 Plugin 'elixir-lang/vim-elixir'
-Plugin 'w0rp/ale' "js
+Plugin 'dense-analysis/ale'
+let g:ale_linters = {
+\   'javascript': ['eslint'],
+\   'ruby': ['ruby', 'rubocop'],
+\   'typescript': ['tslint', 'tsserver'],
+\}
+let g:ale_linters_explicit = 1 " Only run linters named in ale_linters settings.
+let g:ale_set_highlights = 0
+let g:ale_sign_error = '✖︎'
+let g:ale_sign_warning = '◦'
 
 "Airline Theme plugins
 Plugin 'vim-airline/vim-airline'
@@ -104,6 +113,7 @@ Plugin 'kien/ctrlp.vim'
 let g:ctrlp_max_files=0
 let g:ctrlp_user_command =  
   \ ['.git', 'cd %s && git ls-files -co --exclude-standard']
+let g:ctrlp_custom_ignore = 'node_modules\|DS_Store\|git'
 
 Plugin 'scrooloose/nerdcommenter'
 "Plugin 'leafgarland/typescript-vim'
