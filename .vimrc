@@ -84,13 +84,6 @@ let g:syntastic_check_on_wq = 0
 "Navigation plugins
 Plugin 'mileszs/ack.vim'
 Plugin 'rking/ag.vim'
-  "nerdtree
-"Plugin 'scrooloose/nerdtree'
-"map <C-h> :NERDTreeToggle<CR>
-"map <C-n> :NERDTreeFind<CR>
-"let NERDTreeAutoDeleteBuffer = 1
-"let NERDTreeMinimalUI = 1
-"let NERDTreeDirArrows = 1
 
 "Shortcut plugins
 Plugin 'tpope/vim-repeat'
@@ -123,12 +116,15 @@ filetype plugin indent on    " required
 " Put your non-Plugin stuff after this line
 "---------------------------------------------------------"
 
+"Keymaps
+nnoremap <C-k><C-i> :ALEHover<CR>
+nnoremap <C-k><C-r> :ALEFindReferences<CR>
+nnoremap <C-k><C-d> :ALEGoToDefinition<CR>
+
+
 "HTML Tab autocomplete (</     ctrl+x, ctrl+o)
 autocmd FileType html set omnifunc=htmlcomplete#CompleteTags
 
-"set tab title to CWD
-"set t_ts=]1
-"set t_fs=
 let &titlestring = hostname() . "[vim(" . expand("%:t") . ")]"
 if &term == "screen"
   set t_ts=^[k
