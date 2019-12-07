@@ -5,7 +5,8 @@ plugins=(
   # zsh-nvm this is commented out because it produces a 'nvm is not compatible with the npm config'
 )
 
-alias vim=/usr/local/bin/vim
+#alias vim=/usr/local/bin/vim #use 8.1
+alias vim=nvim
 
 ZSH_THEME="powerlevel9k/powerlevel9k"
 # POWERLEVEL 9k CUSTOMISATION
