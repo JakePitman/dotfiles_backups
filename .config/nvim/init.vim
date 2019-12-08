@@ -116,9 +116,8 @@ let g:ctrlp_user_command =
 let g:ctrlp_custom_ignore = 'node_modules\|DS_Store\|git'
 
 Plugin 'scrooloose/nerdcommenter'
-"Plugin 'leafgarland/typescript-vim'
+let g:NERDSpaceDelims = 1
 set rtp+=/usr/local/opt/fzf
-"Plugin 'tpope/vim-commentary'
 
 call vundle#end()
 filetype plugin indent on    " required

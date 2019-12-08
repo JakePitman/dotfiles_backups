@@ -118,6 +118,7 @@ let g:ctrlp_user_command =
 let g:ctrlp_custom_ignore = 'node_modules\|DS_Store\|git'
 
 Plugin 'scrooloose/nerdcommenter'
+let g:NERDSpaceDelims = 1
 "Plugin 'leafgarland/typescript-vim'
 set rtp+=/usr/local/opt/fzf
 "Plugin 'tpope/vim-commentary'
