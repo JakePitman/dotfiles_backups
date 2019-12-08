@@ -93,6 +93,7 @@ Plugin 'tpope/vim-rails'
 Plugin 'leafgarland/typescript-vim'
 Plugin 'elixir-lang/vim-elixir'
 Plugin 'dense-analysis/ale'
+Plugin 'ianks/vim-tsx'
 let g:ale_linters = {
 \   'javascript': ['eslint'],
 \   'ruby': ['ruby', 'rubocop'],

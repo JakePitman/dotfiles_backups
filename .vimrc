@@ -92,10 +92,12 @@ Plugin 'tpope/vim-repeat'
 "Language-specific plugins
 Plugin 'tpope/vim-rails'
 Plugin 'leafgarland/typescript-vim'
+Plugin 'ianks/vim-tsx'
 Plugin 'elixir-lang/vim-elixir'
 Plugin 'dense-analysis/ale'
 let g:ale_linters = {
 \   'javascript': ['eslint'],
+\   'typescript': ['tsserver', 'tslint'],
 \   'ruby': ['ruby', 'rubocop'],
 \}
 " Only run linters named in ale_linters settings.
