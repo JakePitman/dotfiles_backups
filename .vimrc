@@ -3,6 +3,8 @@ syntax on
 set title
 set wildmenu
 set showtabline=2
+set splitright
+set splitbelow
 set backspace=indent,eol,start " allow delete on pre-existing chars
 set directory^=$HOME/.vim/tmp// " store swp files in .vim/tmp instead of current dir
 let g:jsx_ext_required = 0 " Use JSX for js files
