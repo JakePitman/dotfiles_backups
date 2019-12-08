@@ -1,10 +1,9 @@
+
 colorscheme midnightsun
 syntax on
 set title
 set wildmenu
 set showtabline=2
-set splitright
-set splitbelow
 set backspace=indent,eol,start " allow delete on pre-existing chars
 set directory^=$HOME/.vim/tmp// " store swp files in .vim/tmp instead of current dir
 let g:jsx_ext_required = 0 " Use JSX for js files
@@ -97,9 +96,9 @@ Plugin 'dense-analysis/ale'
 let g:ale_linters = {
 \   'javascript': ['eslint'],
 \   'ruby': ['ruby', 'rubocop'],
+\   'typescript': ['tslint', 'tsserver'],
 \}
-" Only run linters named in ale_linters settings.
-let g:ale_linters_explicit = 1
+let g:ale_linters_explicit = 1 " Only run linters named in ale_linters settings.
 let g:ale_set_highlights = 0
 let g:ale_sign_error = '✖︎'
 let g:ale_sign_warning = '◦'
@@ -108,7 +107,6 @@ let g:ale_sign_warning = '◦'
 Plugin 'vim-airline/vim-airline'
 Plugin 'vim-airline/vim-airline-themes'
 let g:airline_theme='simple'
-let g:airline#extensions#ale#enabled = 1
 
 "Plugin 'prettier/vim-prettier'
 Plugin 'kien/ctrlp.vim'
