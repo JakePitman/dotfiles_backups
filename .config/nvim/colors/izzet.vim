@@ -1,392 +1,225 @@
-"ghlight clear
+" File:       izzet.vim
+" Maintainer: jakepitman
+" Modified:   2019-01-04 19:45+0900
+" License:    MIT
+
+
+if !has('gui_running') && &t_Co < 256
+  finish
+endif
+
+set background=dark
+hi clear
 
 if exists('syntax_on')
   syntax reset
 endif
 
-let g:colors_name = 'neodark'
+let g:colors_name = 'izzet'
 
-" Functions {{{
-function! s:generate_base_colors(base1)
-  let b1 = s:RGB2HSL(s:hex2RGB(a:base1))
-  let b2 = [b1[0], b1[1], b1[2]+5]
-  let b3 = [b1[0], b1[1], b2[2]+10]
-  let b4 = [b1[0], b1[1], b3[2]+15]
-  let b5 = [b1[0], b1[1], b4[2]+25]
-  return [a:base1,
-        \ s:RGB2hex(s:HSL2RGB(b2)),
-        \ s:RGB2hex(s:HSL2RGB(b3)),
-        \ s:RGB2hex(s:HSL2RGB(b4)),
-        \ s:RGB2hex(s:HSL2RGB(b5))]
-endfunction
 
-function! s:hex2RGB(hex)
-  let R = printf("%d", "0x".a:hex[1:2])
-  let G = printf("%d", "0x".a:hex[3:4])
-  let B = printf("%d", "0x".a:hex[5:6])
-  return [R,G,B]
-endfunction
+hi! ColorColumn cterm=NONE ctermbg=235 guibg=#1e2132
+hi! CursorColumn cterm=NONE ctermbg=235 guibg=#1e2132
+hi! CursorLine cterm=NONE ctermbg=235 guibg=#1e2132
+hi! Comment ctermfg=242 guifg=#6b7089
+hi! Constant ctermfg=33 guifg=#a093c7
+hi! Cursor ctermbg=252 ctermfg=232 guibg=#c6c8d1 guifg=#161821
+hi! CursorLineNr ctermbg=232 ctermfg=33 guibg=#2a3158 guifg=#cdd1e6
+hi! Delimiter ctermfg=252 guifg=#c6c8d1
+hi! DiffAdd ctermbg=29 ctermfg=158 guibg=#45493e guifg=#c0c5b9
+hi! DiffChange ctermbg=23 ctermfg=159 guibg=#384851 guifg=#b3c3cc
+hi! DiffDelete ctermbg=95 ctermfg=224 guibg=#53343b guifg=#ceb0b6
+hi! DiffText cterm=NONE ctermbg=30 ctermfg=195 gui=NONE guibg=#5b7881 guifg=#c6c8d1
+hi! Directory ctermfg=33 guifg=#89b8c2
+hi! Error ctermbg=232 ctermfg=203 guibg=#161821 guifg=#e27878
+hi! ErrorMsg ctermbg=232 ctermfg=203 guibg=#161821 guifg=#e27878
+hi! WarningMsg ctermbg=232 ctermfg=203 guibg=#161821 guifg=#e27878
+hi! EndOfBuffer ctermbg=232 ctermfg=33 guibg=#161821 guifg=#242940
+hi! NonText ctermbg=232 ctermfg=236 guibg=#161821 guifg=#242940
+hi! SpecialKey ctermbg=232 ctermfg=236 guibg=#161821 guifg=#242940
+hi! Folded ctermbg=235 ctermfg=245 guibg=#1e2132 guifg=#686f9a
+hi! FoldColumn ctermbg=235 ctermfg=239 guibg=#1e2132 guifg=#444b71
+hi! Function ctermfg=1 guifg=#84a0c6
+hi! Identifier cterm=NONE ctermfg=160 guifg=#89b8c2
+hi! Include ctermfg=124 guifg=#84a0c6
+hi! LineNr ctermbg=232 ctermfg=1 guibg=#1e2132 guifg=#444b71
+hi! MatchParen ctermbg=255 ctermfg=236 guibg=#3e445e guifg=#ffffff
+hi! MoreMsg ctermfg=150 guifg=#b4be82
+hi! Normal ctermbg=232 ctermfg=252 guibg=#161821 guifg=#c6c8d1
+hi! Operator ctermfg=196 guifg=#84a0c6
+hi! Pmenu ctermbg=236 ctermfg=251 guibg=#3d425b guifg=#c6c8d1
+hi! PmenuSbar ctermbg=236 guibg=#3d425b
+hi! PmenuSel ctermbg=240 ctermfg=255 guibg=#5b6389 guifg=#eff0f4
+hi! PmenuThumb ctermbg=251 guibg=#c6c8d1
+hi! PreProc ctermfg=39 guifg=#b4be82
+hi! Question ctermfg=150 guifg=#b4be82
+hi! QuickFixLine ctermbg=124 ctermfg=252 guibg=#272c42 guifg=#c6c8d1
+hi! Search ctermbg=1 ctermfg=15 guibg=#e4aa80 guifg=#392313
+hi! SignColumn ctermbg=235 ctermfg=239 guibg=#1e2132 guifg=#444b71
+hi! Special ctermfg=124 guifg=#b4be82
+hi! SpellBad ctermbg=95 ctermfg=252 gui=undercurl guisp=#e27878
+hi! SpellCap ctermbg=24 ctermfg=252 gui=undercurl guisp=#84a0c6
+hi! SpellLocal ctermbg=23 ctermfg=252 gui=undercurl guisp=#89b8c2
+hi! SpellRare ctermbg=97 ctermfg=252 gui=undercurl guisp=#a093c7
+hi! Statement ctermfg=32 gui=NONE guifg=#84a0c6
+hi! StatusLine cterm=reverse ctermbg=232 ctermfg=245 gui=reverse guibg=#17171b guifg=#818596 term=reverse
+hi! StatusLineTerm cterm=reverse ctermbg=232 ctermfg=245 gui=reverse guibg=#17171b guifg=#818596 term=reverse
+hi! StatusLineNC cterm=reverse ctermbg=238 ctermfg=233 gui=reverse guibg=#3e445e guifg=#0f1117
+hi! StatusLineTermNC cterm=reverse ctermbg=238 ctermfg=233 gui=reverse guibg=#3e445e guifg=#0f1117
+hi! StorageClass ctermfg=39 guifg=#84a0c6
+hi! String ctermfg=68 guifg=#89b8c2
+hi! Structure ctermfg=110 guifg=#84a0c6
+hi! TabLine cterm=NONE ctermbg=245 ctermfg=232 gui=NONE guibg=#818596 guifg=#17171b
+hi! TabLineFill cterm=reverse ctermbg=232 ctermfg=235 gui=reverse guibg=#17171b guifg=#818596
+hi! TabLineSel cterm=NONE ctermbg=33 ctermfg=15 gui=NONE guibg=#161821 guifg=#9a9ca5
+hi! Title ctermfg=81 gui=NONE guifg=#e2a478
+hi! Todo ctermbg=15 ctermfg=124 guibg=#45493e guifg=#b4be82
+hi! Type ctermfg=75 gui=NONE guifg=#84a0c6
+hi! Underlined cterm=underline ctermfg=110 gui=underline guifg=#84a0c6 term=underline
+hi! VertSplit cterm=NONE ctermbg=33 ctermfg=33 gui=NONE guibg=#0f1117 guifg=#0f1117
+hi! Visual ctermbg=236 guibg=#272c42
+hi! WildMenu ctermbg=255 ctermfg=232 guibg=#d4d5db guifg=#17171b
+hi! diffAdded ctermfg=150 guifg=#b4be82
+hi! diffRemoved ctermfg=203 guifg=#e27878
+hi! ALEErrorSign ctermbg=235 ctermfg=203 guibg=#1e2132 guifg=#e27878
+hi! ALEWarningSign ctermbg=235 ctermfg=216 guibg=#1e2132 guifg=#e2a478
+hi! ALEVirtualTextError ctermfg=203 guifg=#e27878
+hi! ALEVirtualTextWarning ctermfg=216 guifg=#e2a478
+hi! CtrlPMode1 ctermbg=241 ctermfg=232 guibg=#5a5f72 guifg=#17171b
+hi! EasyMotionShade ctermfg=239 guifg=#3d425b
+hi! EasyMotionTarget ctermfg=150 guifg=#b4be82
+hi! EasyMotionTarget2First ctermfg=216 guifg=#e2a478
+hi! EasyMotionTarget2Second ctermfg=216 guifg=#e2a478
+hi! GitGutterAdd ctermbg=235 ctermfg=150 guibg=#1e2132 guifg=#b4be82
+hi! GitGutterChange ctermbg=235 ctermfg=109 guibg=#1e2132 guifg=#89b8c2
+hi! GitGutterChangeDelete ctermbg=235 ctermfg=109 guibg=#1e2132 guifg=#89b8c2
+hi! GitGutterDelete ctermbg=235 ctermfg=203 guibg=#1e2132 guifg=#e27878
+hi! Sneak ctermbg=140 ctermfg=232 guibg=#a093c7 guifg=#161821
+hi! SneakScope ctermbg=236 ctermfg=242 guibg=#272c42 guifg=#6b7089
+hi! SyntasticErrorSign ctermbg=235 ctermfg=203 guibg=#1e2132 guifg=#e27878
+hi! SyntasticStyleErrorSign ctermbg=235 ctermfg=203 guibg=#1e2132 guifg=#e27878
+hi! SyntasticStyleWarningSign ctermbg=235 ctermfg=216 guibg=#1e2132 guifg=#e2a478
+hi! SyntasticWarningSign ctermbg=235 ctermfg=216 guibg=#1e2132 guifg=#e2a478
+hi! ZenSpace ctermbg=203 guibg=#e27878
+hi! icebergALAccentRed ctermfg=203 guifg=#e27878
 
-function! s:RGB2hex(RGB)
-  return printf("#%x%x%x", a:RGB[0], a:RGB[1], a:RGB[2])
-endfunction
-
-function! s:RGB2HSL(RGB)
-  let R = a:RGB[0]
-  let G = a:RGB[1]
-  let B = a:RGB[2]
-
-  let MAX = max([R, G, B])
-  let MIN = min([R, G, B])
-
-  let H = MAX - MIN
-  if H > 0
-    if MAX == R
-      let H = 60 * (G - B) / H
-    elseif MAX == G
-      let H = 60 * (B - R) / H + 120
-    elseif MAX == B
-      let H = 60 * (R - G) / H + 240
-    endif
-    if H < 0
-      let H += 360
-    endif
-  endif
-
-  let CNT = (MAX + MIN) / 2
-  if CNT < 128
-    let S = 100 * (MAX - MIN) / (MAX + MIN)
-  else
-    let S = 100 * (MAX - MIN) / (510 - MAX - MIN)
-  endif
-
-  let L = CNT * 100 / 255
-
-  return [H,S,L]
-endfunction
-
-function! s:HSL2RGB(HSL)
-  let H = a:HSL[0]
-  let S = a:HSL[1]
-  let L = a:HSL[2]
-
-  if L < 50
-    let MAX = 255 * (L + L*S/100) / 100
-    let MIN = 255 * (L - L*S/100) / 100
-  else
-    let MAX = 255 * (L + (100-L)*S/100) / 100
-    let MIN = 255 * (L - (100-L)*S/100) / 100
-  endif
-
-  if H < 60
-    let R = MAX
-    let G = H * (MAX-MIN) / 60 + MIN
-    let B = MIN
-  elseif H < 120
-    let R = (120-H) * (MAX-MIN) / 60 + MIN
-    let G = MAX
-    let B = MIN
-  elseif H < 180
-    let R = MIN
-    let G = MAX
-    let B = (H-120) * (MAX-MIN) / 60 + MIN
-  elseif H < 240
-    let R = MIN
-    let G = (240-H) * (MAX-MIN) / 60 + MIN
-    let B = MAX
-  elseif H < 300
-    let R = (H-240) * (MAX-MIN) / 60 + MIN
-    let G = MIN
-    let B = MAX
-  else
-    let R = MAX
-    let G = MIN
-    let B = (360-H) * (MAX-MIN) / 60 + MIN
-  endif
-  return [R,G,B]
-endfunction
-
-" }}}
-
-if !exists('g:neodark#italics')
-  let g:neodark#italics = 0
-endif
-
-if !exists('g:neodark#use_custom_terminal_theme')
-  let g:neodark#use_custom_terminal_theme = 0
-endif
-
-if !exists('g:neodark#use_256color')
-  let g:neodark#use_256color = 0
-endif
-
-if !exists('g:neodark#background')
-  let g:neodark#background = ''
-endif
-
-if !exists('g:neodark#terminal_transparent')
-  let g:neodark#terminal_transparent = 0
-endif
-
-if !exists('g:neodark#solid_vertsplit')
-  let g:neodark#solid_vertsplit = 0
-endif
-
-if g:neodark#background == ''
-  let s:base1 = ['#1F2F38', 236]
-  let s:base2 = ['#263A45', 237]
-  let s:base3 = ['#475C69', 59]
-  let s:base4 = ['#658595', 245]
-  let s:base5 = ['#AABBC4', 250]
-else
-  let bases = s:generate_base_colors(g:neodark#background)
-  let s:base1 = [bases[0], 236]
-  let s:base2 = [bases[1], 237]
-  let s:base3 = [bases[2], 59]
-  let s:base4 = [bases[3], 245]
-  let s:base5 = [bases[4], 250]
-endif
-
-"let s:red        = ['#DC657D', 168]
-let s:red        = ['#DC657D', 168]
-let s:green      = ['#84B97C', 108]
-let s:yellow     = ['#D4B261', 179]
-let s:blue       = ['#639EE4', 74]
-let s:purple     = ['#B888E2', 140]
-let s:orange     = ['#E18254', 173]
-let s:pink       = ['#E69CA0', 181]
-let s:teal       = ['#4BB1A7', 73]
-let s:beige      = ['#C7C18B', 180]
-let s:light_blue = ['#72C7D1', 80]
-let s:brown      = ['#AE8785', 138]
-
-if g:neodark#use_256color == 1
-  let s:base1[0] = '#303030'
-  let s:base2[0] = '#3a3a3a'
-  let s:base3[0] = '#5f5f5f'
-  let s:base4[0] = '#8a8a8a'
-  let s:base5[0] = '#bcbcbc'
-
-  let s:red[0]        = '#d75f87'
-  let s:green[0]      = '#87af87'
-  let s:yellow[0]     = '#d7af5f'
-  let s:blue[0]       = '#5fafd7'
-  let s:purple[0]     = '#af87d7'
-  let s:orange[0]     = '#d7875f'
-  let s:pink[0]       = '#d7afaf'
-  let s:teal[0]       = '#5fafaf'
-  let s:beige[0]      = '#d7af87'
-  let s:light_blue[0] = '#5fd7d7'
-  let s:brown[0]      = '#af8787'
-endif
-
-if g:neodark#use_custom_terminal_theme == 1
-  let s:base1[1] = 0
-  let s:base2[1] = 8
-  let s:base3[1] = 13
-  let s:base4[1] = 7
-  let s:base5[1] = 15
-
-  let s:red[1]        = 1
-  let s:green[1]      = 2
-  let s:yellow[1]     = 3
-  let s:blue[1]       = 4
-  let s:purple[1]     = 5
-  let s:orange[1]     = 6
-  let s:pink[1]       = 9
-  let s:teal[1]       = 10
-  let s:beige[1]      = 11
-  let s:light_blue[1] = 12
-  let s:brown[1]      = 14
-endif
-
-" Transparent Background
-if g:neodark#terminal_transparent == 1
-  let s:base1[1] = 'none' " This doesn't work well for airline
-end
-
-" neovim terminal colors
-if has('nvim')
-  let g:terminal_color_0  = s:base1[0]
-  let g:terminal_color_1  = s:red[0]
-  let g:terminal_color_2  = s:green[0]
-  let g:terminal_color_3  = s:yellow[0]
-  let g:terminal_color_4  = s:blue[0]
-  let g:terminal_color_5  = s:purple[0]
-  let g:terminal_color_6  = s:orange[0]
-  let g:terminal_color_7  = s:base4[0]
-  let g:terminal_color_8  = s:base2[0]
-  let g:terminal_color_9  = s:pink[0]
-  let g:terminal_color_10 = s:teal[0]
-  let g:terminal_color_11 = s:beige[0]
-  let g:terminal_color_12 = s:light_blue[0]
-  let g:terminal_color_13 = s:base3[0]
-  let g:terminal_color_14 = s:brown[0]
-  let g:terminal_color_15 = s:base5[0]
-endif
-
-" vim terminal colors
-let g:terminal_ansi_colors = [s:base1[0], s:red[0], s:green[0], s:yellow[0],
-      \ s:blue[0], s:purple[0], s:orange[0], s:base4[0], s:base2[0], s:pink[0],
-      \ s:teal[0], s:beige[0], s:light_blue[0], s:base3[0], s:brown[0], s:base5[0]]
-
-function! s:hi(group, fg, bg, attr)
-  let l:attr = a:attr
-  if g:neodark#italics == 0 && l:attr ==? 'italic'
-    let l:attr = 'none'
-  endif
-
-  if !empty(a:fg)
-    exec 'hi ' . a:group . ' guifg=' . a:fg[0] . ' ctermfg=' . a:fg[1]
-  endif
-
-  if !empty(a:bg)
-    exec 'hi ' . a:group . ' guibg=' . a:bg[0] . ' ctermbg=' . a:bg[1]
-  endif
-
-  if l:attr != ''
-    exec 'hi ' . a:group . ' gui=' . l:attr . ' cterm=' . l:attr . ' guisp=NONE'
-  endif
-endfun
-
-" Vim Editor
-call s:hi('ColorColumn',               '',           s:base2,    '')
-call s:hi('Cursor',                    s:base2,      s:base5,    '')
-call s:hi('CursorColumn',              '',           s:base2,    '')
-call s:hi('CursorLine',                '',           s:base2,    'none')
-call s:hi('CursorLineNr',              s:light_blue, s:base2,    'none')
-call s:hi('Directory',                 s:blue,       '',         '')
-call s:hi('DiffAdd',                   s:green,      s:base2,    'none')
-call s:hi('DiffChange',                s:yellow,     s:base2,    'none')
-call s:hi('DiffDelete',                s:red,        s:base2,    'none')
-call s:hi('DiffText',                  s:blue,       s:base1,    'none')
-call s:hi('ErrorMsg',                  s:red,        s:base1,    'bold')
-call s:hi('FoldColumn',                s:base4,      s:base2,    '')
-call s:hi('Folded',                    s:base3,      s:base1,    '')
-call s:hi('IncSearch',                 s:beige,      '',         '')
-call s:hi('LineNr',                    s:base3,      '',         '')
-call s:hi('MatchParen',                s:light_blue, s:base1,    'underline,bold')
-call s:hi('ModeMsg',                   s:green,      '',         '')
-call s:hi('MoreMsg',                   s:green,      '',         '')
-call s:hi('NonText',                   s:base4,      '',         'none')
-call s:hi('Normal',                    s:base5,      s:base1,    'none')
-call s:hi('Pmenu',                     s:base5,      s:base3,    '')
-call s:hi('PmenuSbar',                 '',           s:base2,    '')
-call s:hi('PmenuSel',                  s:base2,      s:green,    '')
-call s:hi('PmenuThumb',                '',           s:base4,    '')
-call s:hi('Question',                  s:blue,       '',         'none')
-call s:hi('Search',                    s:base1,      s:beige,    '')
-call s:hi('SignColumn',                s:base5,      s:base1,    '')
-call s:hi('SpecialKey',                s:base4,      '',         '')
-call s:hi('SpellBad',                  s:red,        s:base1,    'underline')
-call s:hi('SpellCap',                  s:brown,      s:base1,    'none')
-call s:hi('SpellRare',                 s:brown,      s:base1,    'none')
-call s:hi('SpellLocal',                s:brown,      s:base1,    'none')
-call s:hi('StatusLine',                s:base5,      s:base3,    'none')
-call s:hi('StatusLineNC',              s:base2,      s:base4,    '')
-call s:hi('TabLine',                   s:base4,      s:base2,    'none')
-call s:hi('TabLineFill',               s:base4,      s:base2,    'none')
-call s:hi('TabLineSel',                s:yellow,     s:base3,    'none')
-call s:hi('Title',                     s:orange,     '',         'none')
-call s:hi('Visual',                    s:base5,      s:base3,    '')
-call s:hi('WarningMsg',                s:red,        '',         '')
-call s:hi('WildMenu',                  s:base2,      s:green,	   '')
-
-" Solid bar for vertical split
-if g:neodark#solid_vertsplit == 1
-  call s:hi('VertSplit',                 s:base2,      s:base2,    'none')
-else
-  call s:hi('VertSplit',                 s:base4,      s:base1,    'none')
-endif
-
-" Standard Syntax
-call s:hi('Comment',                   s:base4,      '',         'italic')
-call s:hi('Constant',                  s:red,        '',         '')
-call s:hi('String',                    s:orange,     '',         '')
-call s:hi('Character',                 s:orange,     '',         '')
-call s:hi('Identifier',                s:teal,       '',         'none')
-call s:hi('Function',                  s:blue,       '',         '')
-call s:hi('Statement',                 s:green,      '',         'none')
-call s:hi('Exception',                 s:red,        '',         '')
-call s:hi('PreProc',                   s:purple,     '',         '')
-call s:hi('Define',                    s:purple,     '',         'none')
-call s:hi('Macro',                     s:purple,     '',         '')
-call s:hi('Type',                      s:yellow,     '',         'none')
-call s:hi('StorageClass',              s:teal,       '',         '')
-call s:hi('Special',                   s:pink,       '',         '')
-call s:hi('Delimiter',                 s:base5,      '',         '')
-call s:hi('Underlined',                s:base5,      '',         'underline')
-call s:hi('Error',                     s:red,        s:base1,    'bold')
-call s:hi('Todo',                      s:base5,      s:base1,    'bold')
-call s:hi('Conceal',                   s:beige,      s:base1,    '')
-
-" Languages {{{
-" Vim {{{
-hi! link vimFunc     Function
-hi! link vimUserFunc Function
-call s:hi('vimLet',                    s:yellow,     '',         '')
-" }}}
-" Shell {{{
-hi! link shFunction  Function
-" }}}
-" Markdown {{{
-hi! link markdownHeadingDelimiter  Statement
-hi! link markdownLinkDelimiter     Statement
-hi! link markdownLinkTextDelimiter Statement
-hi! link markdownLinkText          Statement
-hi! link markdownURL               Underlined
-call s:hi('markdownCode',          s:blue,       '',         '')
-call s:hi('markdownListMarker',    s:teal,       '',         '')
-call s:hi('markdownHeadingRule',   s:base4,      '',         '')
-call s:hi('markdownCodeDelimiter', s:green,      '',         '')
-call s:hi('markdownBold',          '',           '',         'bold')
-call s:hi('markdownBoldItalic',    '',           '',         'bold,italic')
-" }}}
-" Pandoc markdown {{{
-call s:hi('pandocDelimitedCodeBlock',      s:blue,       '',         '')
-call s:hi('pandocDelimitedCodeBlockStart', s:base5,      '',         '')
-call s:hi('pandocDelimitedCodeBlockEnd',   s:base5,      '',         '')
-call s:hi('pandocAtxHeader',               s:orange,     '',         'bold')
-" }}}
-" TeX {{{
-call s:hi('texRefZone', s:orange,       '',         '')
-call s:hi('texMath',    s:blue,         '',         '')
-" }}}
-" Ruby {{{
+hi! link cssBraces Delimiter
+hi! link cssClassName Special
+hi! link cssClassNameDot Normal
+hi! link cssPseudoClassId Special
+hi! link cssTagName Statement
+hi! link helpHyperTextJump Constant
+hi! link htmlArg Constant
+hi! link htmlEndTag Statement
+hi! link htmlTag Statement
+hi! link jsonQuote Normal
+hi! link phpVarSelector Identifier
+hi! link pythonFunction Title
+hi! link rubyDefine Statement
+hi! link rubyFunction Title
+hi! link rubyInterpolationDelimiter String
+hi! link rubySharpBang Comment
 hi! link rubyStringDelimiter String
-hi! link rubyBlockParameterList rubyBlockParameter
-call s:hi('rubyInterpolationDelimiter', s:teal,       '',         '')
-" }}}
-" Go {{{
-hi! link goFunctionCall Function
-hi! link goMethodCall   Function
-" }}}
-" }}}
-" Plugins {{{
-" Vim-Fugitive
-call s:hi('diffAdded',                 s:green,      '',         '')
-call s:hi('diffRemoved',               s:red,        '',         '')
+hi! link sassClass Special
+hi! link shFunction Normal
+hi! link vimContinue Comment
+hi! link vimFuncSID vimFunction
+hi! link vimFuncVar Normal
+hi! link vimFunction Title
+hi! link vimGroup Statement
+hi! link vimHiGroup Statement
+hi! link vimHiTerm Identifier
+hi! link vimMapModKey Special
+hi! link vimOption Identifier
+hi! link vimVar Normal
+hi! link xmlAttrib Constant
+hi! link xmlAttribPunct Statement
+hi! link xmlEndTag Statement
+hi! link xmlNamespace Statement
+hi! link xmlTag Statement
+hi! link xmlTagName Statement
+hi! link yamlKeyValueDelimiter Delimiter
+hi! link CtrlPPrtCursor Cursor
+hi! link CtrlPMatch Title
+hi! link CtrlPMode2 StatusLine
+hi! link deniteMatched Normal
+hi! link deniteMatchedChar Title
+hi! link jsFlowMaybe Normal
+hi! link jsFlowObject Normal
+hi! link jsFlowType PreProc
+hi! link graphqlName Normal
+hi! link graphqlOperator Normal
+hi! link jsArrowFunction Operator
+hi! link jsClassDefinition Normal
+hi! link jsClassFuncName Title
+hi! link jsExport Statement
+hi! link jsFuncName Title
+hi! link jsFutureKeys Statement
+hi! link jsFuncCall Normal
+hi! link jsGlobalObjects Statement
+hi! link jsModuleKeywords Statement
+hi! link jsModuleOperators Statement
+hi! link jsNull Constant
+hi! link jsObjectFuncName Title
+hi! link jsObjectKey Identifier
+hi! link jsSuper Statement
+hi! link jsTemplateBraces Special
+hi! link jsUndefined Constant
+hi! link markdownBold Special
+hi! link markdownCode String
+hi! link markdownCodeDelimiter String
+hi! link markdownHeadingDelimiter Comment
+hi! link markdownRule Comment
+hi! link ngxDirective Statement
+hi! link plug1 Normal
+hi! link plug2 Identifier
+hi! link plugDash Comment
+hi! link plugMessage Special
+hi! link SignifySignAdd GitGutterAdd
+hi! link SignifySignChange GitGutterChange
+hi! link SignifySignChangeDelete GitGutterChangeDelete
+hi! link SignifySignDelete GitGutterDelete
+hi! link SignifySignDeleteFirstLine SignifySignDelete
+hi! link StartifyBracket Comment
+hi! link StartifyFile Identifier
+hi! link StartifyFooter Constant
+hi! link StartifyHeader Constant
+hi! link StartifyNumber Special
+hi! link StartifyPath Comment
+hi! link StartifySection Statement
+hi! link StartifySlash Comment
+hi! link StartifySpecial Normal
+hi! link svssBraces Delimiter
+hi! link swiftIdentifier Normal
+hi! link typescriptAjaxMethods Normal
+hi! link typescriptBraces Normal
+hi! link typescriptEndColons Normal
+hi! link typescriptFuncKeyword Statement
+hi! link typescriptGlobalObjects Statement
+hi! link typescriptHtmlElemProperties Normal
+hi! link typescriptIdentifier Statement
+hi! link typescriptMessage Normal
+hi! link typescriptNull Constant
+hi! link typescriptParens Normal
 
-" Vim-Gittgutter
-call s:hi('GitGutterAdd',              s:green,      '',         '')
-call s:hi('GitGutterChange',           s:yellow,     '',         '')
-call s:hi('GitGutterDelete',           s:red,        '',         '')
-call s:hi('GitGutterChangeDelete',     s:orange,     '',         '')
+if has('nvim')
+  let g:terminal_color_0 = '#1e2132'
+  let g:terminal_color_1 = '#e27878'
+  let g:terminal_color_2 = '#b4be82'
+  let g:terminal_color_3 = '#e2a478'
+  let g:terminal_color_4 = '#84a0c6'
+  let g:terminal_color_5 = '#a093c7'
+  let g:terminal_color_6 = '#89b8c2'
+  let g:terminal_color_7 = '#c6c8d1'
+  let g:terminal_color_8 = '#6b7089'
+  let g:terminal_color_9 = '#e98989'
+  let g:terminal_color_10 = '#c0ca8e'
+  let g:terminal_color_11 = '#e9b189'
+  let g:terminal_color_12 = '#91acd1'
+  let g:terminal_color_13 = '#ada0d3'
+  let g:terminal_color_14 = '#95c4ce'
+  let g:terminal_color_15 = '#d2d4de'
+else
+  let g:terminal_ansi_colors = ['#1e2132', '#e27878', '#b4be82', '#e2a478', '#84a0c6', '#a093c7', '#89b8c2', '#c6c8d1', '#6b7089', '#e98989', '#c0ca8e', '#e9b189', '#91acd1', '#ada0d3', '#95c4ce', '#d2d4de']
+endif
 
-" indent-guides
-call s:hi('IndentGuidesOdd',           '',           s:base2,    '')
-call s:hi('IndentGuidesEven',          '',           s:base2,    '')
-
-" indentLine
-let g:indentLine_color_gui = s:base3[0]
-let g:indentLine_bgcolor_gui = s:base1[0]
-let g:indentLine_color_term = s:base3[1]
-let g:indentLine_bgcolor_term = s:base1[1]
-
-" Vim-Signify
-hi link SignifySignAdd GitGutterAdd
-hi link SignifySignChange GitGutterChange
-hi link SignifySignDelete GitGutterDelete
-" }}}
-
-set background=dark
