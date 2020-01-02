@@ -17,6 +17,9 @@ POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=(status root_indicator background_jobs histor
 declare -A MIDNIGHT_SUN_COLORS
 MIDNIGHT_SUN_COLORS[main_color]='75'
 MIDNIGHT_SUN_COLORS[untracked_color]='81'
+declare -A BACKFIRE_COLORS
+BACKFIRE_COLORS[main_color]='9'
+BACKFIRE_COLORS[untracked_color]='196'
 declare -A IZZET_COLORS
 IZZET_COLORS[main_color]='33'
 IZZET_COLORS[untracked_color]='75'
@@ -29,7 +32,7 @@ GR33N_COLORS[untracked_color]='83'
 
 BLACK_SHADE='234'
 
-read -r MAIN_COLOR UNTRACKED_COLOR <<<$(echo $MIDNIGHT_SUN_COLORS)
+read -r MAIN_COLOR UNTRACKED_COLOR <<<$(echo $BACKFIRE_COLORS)
 
 POWERLEVEL9K_CONTEXT_DEFAULT_FOREGROUND=$BLACK_SHADE
 POWERLEVEL9K_CONTEXT_DEFAULT_BACKGROUND=$MAIN_COLOR
@@ -73,3 +76,4 @@ change-theme() {
 
 
 eval "$(direnv hook zsh)"
+export PATH="/usr/local/opt/mysql@5.7/bin:$PATH"
