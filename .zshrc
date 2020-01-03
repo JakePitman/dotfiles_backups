@@ -23,6 +23,9 @@ BACKFIRE_COLORS[untracked_color]='196'
 declare -A IZZET_COLORS
 IZZET_COLORS[main_color]='33'
 IZZET_COLORS[untracked_color]='75'
+declare -A LUX_COLORS
+LUX_COLORS[main_color]='27'
+LUX_COLORS[untracked_color]='226'
 declare -A ICEBERG_BLUE_COLORS
 ICEBERG_BLUE_COLORS[main_color]='110'
 ICEBERG_BLUE_COLORS[untracked_color]='75'
