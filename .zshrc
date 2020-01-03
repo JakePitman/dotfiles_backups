@@ -30,8 +30,8 @@ declare -A ICEBERG_BLUE_COLORS
 ICEBERG_BLUE_COLORS[main_color]='110'
 ICEBERG_BLUE_COLORS[untracked_color]='75'
 declare -A GR33N_COLORS
-GR33N_COLORS[main_color]='10'
-GR33N_COLORS[untracked_color]='83'
+GR33N_COLORS[main_color]='82'
+GR33N_COLORS[untracked_color]='10'
 
 BLACK_SHADE='234'
 
