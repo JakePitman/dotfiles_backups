@@ -43,6 +43,8 @@ set breakindent
 set linebreak
 
 
+" add fzf to runtime path
+set rtp+=/usr/local/opt/fzf
 " set the runtime path to include Vundle and initialize
 set rtp+=~/.vim/bundle/Vundle.vim
 set runtimepath^=~/.vim/bundle/vim-textobj-user
@@ -93,7 +95,6 @@ Plugin 'tpope/vim-rails'
 Plugin 'leafgarland/typescript-vim'
 Plugin 'elixir-lang/vim-elixir'
 Plugin 'dense-analysis/ale'
-Plugin 'ianks/vim-tsx'
 let g:ale_linters = {
 \   'javascript': ['eslint'],
 \   'ruby': ['ruby', 'rubocop'],
@@ -110,15 +111,18 @@ Plugin 'vim-airline/vim-airline-themes'
 let g:airline_theme='simple'
 
 "Plugin 'prettier/vim-prettier'
-Plugin 'kien/ctrlp.vim'
-let g:ctrlp_max_files=0
-let g:ctrlp_user_command =  
-  \ ['.git', 'cd %s && git ls-files -co --exclude-standard']
-let g:ctrlp_custom_ignore = 'node_modules\|DS_Store\|git'
+"Plugin 'kien/ctrlp.vim'
+"let g:ctrlp_max_files=0
+"let g:ctrlp_user_command =  
+  "\ ['.git', 'cd %s && git ls-files -co --exclude-standard']
+"let g:ctrlp_custom_ignore = 'node_modules\|DS_Store\|git'
+"
+Plugin 'junegunn/fzf.vim'
 
 Plugin 'scrooloose/nerdcommenter'
-let g:NERDSpaceDelims = 1
+"Plugin 'leafgarland/typescript-vim'
 set rtp+=/usr/local/opt/fzf
+"Plugin 'tpope/vim-commentary'
 
 call vundle#end()
 filetype plugin indent on    " required
@@ -127,6 +131,8 @@ filetype plugin indent on    " required
 "---------------------------------------------------------"
 
 "Keymaps
+nnoremap <silent> <C-p> :FZF<CR>
+:command LS Buffers
 nnoremap <C-k><C-i> :ALEHover<CR>
 nnoremap <C-k><C-r> :ALEFindReferences<CR>
 nnoremap <C-k><C-d> :ALEGoToDefinition<CR>
