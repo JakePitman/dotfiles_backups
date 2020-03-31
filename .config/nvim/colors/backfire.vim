@@ -27,7 +27,6 @@ endif
 
 let g:colors_name = 'backfire'
 
-
 hi! ColorColumn cterm=NONE ctermbg=0 guibg=#1e2132
 hi! CursorColumn cterm=NONE ctermbg=0 guibg=#1e2132
 hi! CursorLine cterm=NONE ctermbg=0 guibg=#1e2132
@@ -36,10 +35,10 @@ hi! Constant ctermfg=210 guifg=#a093c7
 hi! Cursor ctermbg=252 ctermfg=0 guibg=#c6c8d1 guifg=#161821
 hi! CursorLineNr ctermbg=0 ctermfg=196 guibg=#2a3158 guifg=#cdd1e6
 hi! Delimiter ctermfg=252 guifg=#c6c8d1
-hi! DiffAdd ctermbg=29 ctermfg=158 guibg=#45493e guifg=#c0c5b9
-hi! DiffChange ctermbg=23 ctermfg=159 guibg=#384851 guifg=#b3c3cc
-hi! DiffDelete ctermbg=95 ctermfg=224 guibg=#53343b guifg=#ceb0b6
-hi! DiffText cterm=NONE ctermbg=30 ctermfg=195 gui=NONE guibg=#5b7881 guifg=#c6c8d1
+hi! DiffAdd ctermbg=0 ctermfg=34 guibg=#45493e guifg=#c0c5b9
+hi! DiffChange ctermbg=0 ctermfg=11 guibg=#384851 guifg=#b3c3cc
+hi! DiffDelete ctermbg=0 ctermfg=1 guibg=#53343b guifg=#ceb0b6
+hi! DiffText cterm=NONE ctermbg=0 ctermfg=11 gui=NONE guibg=#5b7881 guifg=#c6c8d1
 hi! Directory ctermfg=88 guifg=#89b8c2
 hi! Error ctermbg=0 ctermfg=164 guibg=#161821 guifg=#e27878
 hi! ErrorMsg ctermbg=0 ctermfg=164 guibg=#161821 guifg=#e27878
@@ -77,7 +76,7 @@ hi! StatusLineTerm cterm=reverse ctermbg=0 ctermfg=245 gui=reverse guibg=#17171b
 hi! StatusLineNC cterm=reverse ctermbg=238 ctermfg=233 gui=reverse guibg=#3e445e guifg=#0f1117
 hi! StatusLineTermNC cterm=reverse ctermbg=238 ctermfg=233 gui=reverse guibg=#3e445e guifg=#0f1117
 hi! StorageClass ctermfg=250 guifg=#84a0c6
-hi! String ctermfg=203 guifg=#89b8c2
+hi! String ctermfg=202 guifg=#89b8c2
 hi! Structure ctermfg=1 guifg=#84a0c6
 hi! TabLine cterm=NONE ctermbg=245 ctermfg=0 gui=NONE guibg=#818596 guifg=#17171b
 hi! TabLineFill cterm=reverse ctermbg=0 ctermfg=245 gui=reverse guibg=#17171b guifg=#818596
@@ -91,10 +90,10 @@ hi! Visual ctermbg=237 guibg=#272c42
 hi! Number ctermbg=0 ctermfg=255 guibg=#272c42
 hi! WildMenu ctermbg=255 ctermfg=0 guibg=#d4d5db guifg=#17171b
 hi! diffAdded ctermfg=150 guifg=#b4be82
-hi! diffRemoved ctermfg=203 guifg=#e27878
-hi! ALEErrorSign ctermbg=0 ctermfg=203 guibg=#1e2132 guifg=#e27878
+hi! diffRemoved ctermfg=202 guifg=#e27878
+hi! ALEErrorSign ctermbg=0 ctermfg=202 guibg=#1e2132 guifg=#e27878
 hi! ALEWarningSign ctermbg=0 ctermfg=216 guibg=#1e2132 guifg=#e2a478
-hi! ALEVirtualTextError ctermfg=203 guifg=#e27878
+hi! ALEVirtualTextError ctermfg=202 guifg=#e27878
 hi! ALEVirtualTextWarning ctermfg=216 guifg=#e2a478
 hi! CtrlPMode1 ctermbg=241 ctermfg=0 guibg=#5a5f72 guifg=#17171b
 hi! EasyMotionShade ctermfg=239 guifg=#3d425b
@@ -102,17 +101,17 @@ hi! EasyMotionTarget ctermfg=150 guifg=#b4be82
 hi! EasyMotionTarget2First ctermfg=216 guifg=#e2a478
 hi! EasyMotionTarget2Second ctermfg=216 guifg=#e2a478
 hi! GitGutterAdd ctermbg=235 ctermfg=150 guibg=#1e2132 guifg=#b4be82
-hi! GitGutterChange ctermbg=235 ctermfg=109 guibg=#1e2132 guifg=#89b8c2
+hi! GitGutterChange ctermbg=235 ctermfg=142 guibg=#1e2132 guifg=#89b8c2
 hi! GitGutterChangeDelete ctermbg=235 ctermfg=109 guibg=#1e2132 guifg=#89b8c2
-hi! GitGutterDelete ctermbg=235 ctermfg=203 guibg=#1e2132 guifg=#e27878
+hi! GitGutterDelete ctermbg=235 ctermfg=202 guibg=#1e2132 guifg=#e27878
 hi! Sneak ctermbg=140 ctermfg=0 guibg=#a093c7 guifg=#161821
 hi! SneakScope ctermbg=237 ctermfg=242 guibg=#272c42 guifg=#6b7089
-hi! SyntasticErrorSign ctermbg=0 ctermfg=203 guibg=#1e2132 guifg=#e27878
-hi! SyntasticStyleErrorSign ctermbg=0 ctermfg=203 guibg=#1e2132 guifg=#e27878
+hi! SyntasticErrorSign ctermbg=0 ctermfg=202 guibg=#1e2132 guifg=#e27878
+hi! SyntasticStyleErrorSign ctermbg=0 ctermfg=202 guibg=#1e2132 guifg=#e27878
 hi! SyntasticStyleWarningSign ctermbg=0 ctermfg=216 guibg=#1e2132 guifg=#e2a478
 hi! SyntasticWarningSign ctermbg=0 ctermfg=216 guibg=#1e2132 guifg=#e2a478
-hi! ZenSpace ctermbg=203 guibg=#e27878
-hi! icebergALAccentRed ctermfg=203 guifg=#e27878
+hi! ZenSpace ctermbg=202 guibg=#e27878
+hi! icebergALAccentRed ctermfg=202 guifg=#e27878
 
 hi! link cssBraces Delimiter
 hi! link cssClassName Special
