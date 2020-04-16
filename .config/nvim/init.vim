@@ -53,18 +53,26 @@ call vundle#begin()
 
 " ------------ VUNDLE ----------------
 
-
 " let Vundle manage Vundle, required
 Plugin 'VundleVim/Vundle.vim'
 
 "Github plugins
 Plugin 'tpope/vim-fugitive'
 
+"lsp-support -- TODO: not working
+Plugin 'neovim/nvim-lsp'
+function! CurrentLineInfo()
+lua << EOF
+require'nvim_lsp'.tsserver.setup{}
+EOF
+endfunction
+
+
 "Autocompletion plugins
-Plugin 'quramy/tsuquyomi'
-autocmd FileType typescript nmap <buffer> <Leader>t : <C-u>echo tsuquyomi#hint()<CR>
-let g:tsuquyomi_disable_quickfix = 1
-let g:syntastic_typescript_checkers = ['tsuquyomi'] " You shouldn't use 'tsc' checker.
+"Plugin 'quramy/tsuquyomi'
+"autocmd FileType typescript nmap <buffer> <Leader>t : <C-u>echo tsuquyomi#hint()<CR>
+"let g:tsuquyomi_disable_quickfix = 1
+"let g:syntastic_typescript_checkers = ['tsuquyomi'] " You shouldn't use 'tsc' checker.
 
   "autocomplete surroundings...
 Plugin 'raimondi/delimitmate'
@@ -100,10 +108,17 @@ let g:ale_linters = {
 \   'ruby': ['ruby', 'rubocop'],
 \   'typescript': ['tslint', 'tsserver'],
 \}
+let g:ale_fixers = {
+\   'javascript': [
+\       'prettier'
+\   ],
+\}
 let g:ale_linters_explicit = 1 " Only run linters named in ale_linters settings.
 let g:ale_set_highlights = 0
 let g:ale_sign_error = '✖︎'
 let g:ale_sign_warning = '◦'
+let g:ale_set_quickfix = 1
+let g:ale_fix_on_save=1
 
 "Airline Theme plugins
 Plugin 'vim-airline/vim-airline'

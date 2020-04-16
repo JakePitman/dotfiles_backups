@@ -1,4 +1,4 @@
---options=/Users/jaypitman/ctags-patterns-for-javascript/ctagsrc
+--options=/Users/jake.pitman/ctags-patterns-for-javascript/ctagsrc
 --exclude=.git
 --exclude=log
 --exclude=tmp
