@@ -32,6 +32,9 @@ ICEBERG_BLUE_COLORS[untracked_color]='75'
 declare -A GR33N_COLORS
 GR33N_COLORS[main_color]='82'
 GR33N_COLORS[untracked_color]='10'
+declare -A IC3_COLORS
+IC3_COLORS[main_color]='51'
+IC3_COLORS[untracked_color]='81'
 
 BLACK_SHADE='234'
 
