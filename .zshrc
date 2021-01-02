@@ -35,6 +35,9 @@ GR33N_COLORS[untracked_color]='10'
 declare -A GR3Y_COLORS
 GR3Y_COLORS[main_color]='255'
 GR3Y_COLORS[untracked_color]='195'
+declare -A IC3_COLORS
+IC3_COLORS[main_color]='51'
+IC3_COLORS[untracked_color]='81'
 
 BLACK_SHADE='234'
 
